@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Principale</title>
+    <link rel="stylesheet" href="style.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .main-content {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'DM Sans', sans-serif;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <h1>Bienvenue !</h1>
+        <p>Vous êtes connecté.</p>
+        <button onclick="logout()">Se déconnecter</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script>
+        // Configuration Firebase (assurez-vous qu'elle correspond à celle de script.js)
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKW6to7vHn6C0snY2l53t0cTw5dTbDQ90",
+            authDomain: "dacapoapp-918ad.firebaseapp.com",
+            projectId: "dacapoapp-918ad",
+            storageBucket: "dacapoapp-918ad.firebasestorage.app",
+            messagingSenderId: "856805139575",
+            appId: "1:856805139575:web:5e3ed16fa3539381391272",
+            measurementId: "G-137L68XEQ8"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        function logout() {
+            auth.signOut().then(() => {
+                // Déconnexion réussie, rediriger vers la page de connexion
+                window.location.href = 'index.html';
+            }).catch((error) => {
+                console.error('Erreur de déconnexion:', error);
+            });
+        }
+    </script>
+</body>
+</html>
